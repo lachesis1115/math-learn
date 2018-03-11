@@ -1,0 +1,57 @@
+.rank {
+    font-size: 20px;
+}
+.store_point {
+	color: #31aa33;
+}
+.profile {
+	font-size:24px;
+}
+.pn_profile {
+	height: 1000px;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+	background: #ccd1d9;
+}
+
+.pn_achievement {
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pn_chart {
+	height:450px;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pn_result {
+	height:450px;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pn_saler {
+	height:400px;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.right{
+	color: #31aa33;
+	font-weight: bolder;
+	font-family: Arial;
+}
+
+.wrong{
+	color: #d82929;
+	font-weight: bolder;
+	font-family: Arial;
+}
+
+.donut1-chart p {
+	margin-top: 15px;
+    font-weight: 600;
+    font-size:25px;
+	margin-left: 15px;
+}
+.donut1-chart h4 {
+	font-weight: 600;
+    color: #31aa33;
+	font-size: 25px;
+}
