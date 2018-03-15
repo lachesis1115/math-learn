@@ -30,12 +30,18 @@ $(function () {
   if (LoginUser.sad > LoginUser.happy && LoginUser.sad > LoginUser.exciting)  emotion = 3;
   if (LoginUser.exciting > LoginUser.happy && LoginUser.exciting > LoginUser.sad) emotion = 2;
   if (LoginUser.happy > LoginUser.exciting && LoginUser.happy > LoginUser.sad)  emotion = 1;
+  if (LoginUser.happy == LoginUser.exciting && LoginUser.happy == LoginUser.sad) emotion = 4;
 
   var html = [];
   if (emotion == 3)  html.push('<a id="sad" class="btn btn-info  btn-sm">Sad Mode</a>');
-  if (emotion == 1)  html.push('<a id="happy" class="btn btn-success  btn-sm">Happy Mode</a>');
-  if (emotion == 2)  html.push('<a id="exciting" class="btn btn-warning  btn-sm">Exciting Mode</a>');
+  if (emotion == 1)  html.push('<a id="happy" class="btn btn-warning  btn-sm">Happy Mode</a>');
+  if (emotion == 2)  html.push('<a id="exciting" class="btn btn-danger  btn-sm">Exciting Mode</a>');
+  if (emotion == 4)  html.push('<a id="general" class="btn btn-success  btn-sm">General Mode</a>');
   $('.mood').html(html.join(''));
+
+  var point =0;
+  html.push('<h3><labe1 class="font-point">' + point + '</labe1></h3>');
+  $('.point').html(point.join(''));
 
   var i = 0;
   html = [];

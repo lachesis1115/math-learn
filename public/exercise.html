@@ -8,7 +8,12 @@
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
     <title>MATH E-LEARN SYSTEM</title>
-
+    <link rel="shortcut icon" href="../favicon.ico"> 
+    <link rel="stylesheet" type="text/css" href="default.css" />
+    <link href="hexaflip.css" rel="stylesheet" type="text/css">
+    <link href="demo.css" rel="stylesheet" type="text/css">
+   
+    <link href="assets/css/custom.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
@@ -30,10 +35,6 @@
 
 <body>
 <section id="container">
-    <!-- **********************************************************************************************************************************************************
-    TOP BAR CONTENT & NOTIFICATIONS
-    *********************************************************************************************************************************************************** -->
-    <!--header start-->
     <header class="header black-bg">
         <div class="sidebar-toggle-box">
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
@@ -191,12 +192,7 @@
             </ul>
         </div>
     </header>
-    <!--header end-->
 
-    <!-- **********************************************************************************************************************************************************
-    MAIN SIDEBAR MENU
-    *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
     <aside>
         <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
@@ -247,15 +243,138 @@
             <!-- sidebar menu end-->
         </div>
     </aside>
-    <!--sidebar end-->
 
-    <!-- **********************************************************************************************************************************************************
-    MAIN CONTENT
-    *********************************************************************************************************************************************************** -->
-    <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
             <h3><i class="fa fa-angle-right"></i> Exercise </h3>
+            <div id="exercise">
+                    <div class="row mt">
+                        <div class="col-lg-12">
+                            <div class="form-panel">
+                                <h3 class="mb exam_title"><center>Exam Title</center></h3>
+                                <form class="form-horizontal style-form" method="get">
+                                    <div class="row mt">
+                                        <div class="col-lg-6">
+                                            <div class="question-one">
+                                                <div class="form-group">
+                                                    <h3><label class="col-lg-4 control-label">Current Mode:</label></h3>
+                                                    <div class="col-lg-6">
+                                                        <div class="mood"></div>  
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <h3><label class="col-lg-4 control-label">Time:</label></h3>
+                                                    <div class="col-lg-6">
+                                                        <div class="time"></div> 
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <h3><label class="col-lg-4 control-label">Point:</label></h3>
+                                                    <div class="col-lg-6">
+                                                        <div class="point"></div> 
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-6">
+                                            <div class="question-two">
+                                                <div class="form-group">
+                                                    <h3><label class="col-lg-4 control-label">Music</label></h3>
+                                                    <div class="col-lg-6">
+                                                        <input type="checkbox" checked="" data-toggle="switch"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                        <h3><label class="col-lg-4 control-label">Music Type</label></h3>
+                                                        <div class="col-lg-6 btn-group">
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-warning">Pop</button>
+                                                            </div>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-warning">Classic</button>
+                                                            </div>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-warning">Hip Pop</button>
+                                                            </div>
+                                                        </div>
+                                                </div>
+    
+                                                <div class="form-group">
+                                                        <h3><label class="col-lg-4 control-label">Background Image</label></h3>
+                                                        <div class="col-lg-6 btn-group">
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-warning">Pop</button>
+                                                            </div>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-warning">Classic</button>
+                                                            </div>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-warning">Hip Pop</button>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt">
+                                        <div class="col-lg-10">
+                                            <div id="hexaflip-demo5" class="demo"></div>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <h2 class="mb right">&#10004</h2>
+                                            <h2 class="mb wrong">&#10007</h2>     
+                                        </div>
+                                    </div>
+                                    <div class="row mt">
+                                        <div class="col-lg-3">
+                                            <button type="button" class="btn btn-round btn-lg btn-warning">Complete</button>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <button type="button" class="btn btn-round btn-lg btn-success">Next</button>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div id="choose-time">
+                                                    <select id="tens-place">
+                                                        <option>0</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                    </select>
+                                                    <select id="ones-place">
+                                                        <option>0</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                    </select>
+                                                    <button type="button" class="btn btn-round btn-lg btn-info"> Write Answer</button>
+                                                </div>
+                                                <div id="output"></div>
+                                                </div>
+                                        </div>    
+                                    </div>
+                                </form>
+                                
+                            </div><!--form-panel -->
+                        </div><!-- col-lg-8-->                       
+                    </div><!-- /row -->
+                </div>
+                
             <div id="exercise">
                 <!-- BASIC FORM ELELEMNTS -->
                 <div class="row mt">
@@ -377,92 +496,6 @@
                             </form>
                         </div><!--form-panel -->
                     </div><!-- col-lg-8-->
-                    <div class="col-lg-4">
-                        <div class="form-panel">
-                            <h3 class="mb">Current Status </h3>
-                            <form class="form-horizontal style-form" method="get">
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Mode:</label>
-                                    <div class="col-sm-10 mood">
-                                    </div>
-                                </div>
-                            </form>
-
-                            <h3 class="mb">Custom Settings</h3>
-                            <form class="form-horizontal style-form" method="get">
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Music</label>
-                                    <div class="col-sm-10">
-                                        <input type="checkbox" checked="" data-toggle="switch"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-4 control-label">Music Type</label>
-                                    <div class="col-sm-10 btn-group">
-
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Pop</button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Classic</button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Hip=Pop</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-4 control-label">Background Image</label>
-                                    <div class="col-sm-10 btn-group">
-
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Left</button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Middle</button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Right</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-4 control-label">Font Size</label>
-                                    <div class="col-sm-10 btn-group">
-
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Left</button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Middle</button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Right</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-4 control-label">Font Style</label>
-                                    <div class="col-sm-10 btn-group">
-
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Left</button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Middle</button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-warning">Right</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div><!-- col-lg-4-->
                 </div><!-- /row -->
             </div>
         </section>
@@ -480,9 +513,8 @@
         </div>
     </footer>
     <!--footer end-->
-
+<!--
     <div class="showback">
-        <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
              aria-hidden="true">
             <div class="modal-dialog">
@@ -521,6 +553,7 @@
             </div>
         </div>
     </div>
+-->
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
@@ -560,6 +593,9 @@
 <script src="assets/js/js.cookie.min.js"></script>
 <script src="assets/js/view/common.js"></script>
 <script src="assets/js/view/exercise.js"></script>
+<script src="assets/js/view/question.js"></script>
+<script src="hexaflip.js"></script>
+<!--<script src="assets/js/view/cube.js"></script> -->
 
 <script>
     //custom select box
@@ -568,6 +604,214 @@
         $('select.styled').customSelect();
     });
 
+</script>
+
+<script>
+    var hexaDemo5,
+        question = [
+            {
+                value: '1',
+                style: {
+                    backgroundColor: '#e67e22'
+                }
+            },
+            {
+                value: '2',
+                style: {
+                    backgroundColor: '#1ABC9C'
+                }
+            },
+            {
+                value: '3',
+                style: {
+                    backgroundColor: '#f1c40f'
+                }
+            },
+            {
+                value: '4',
+                style: {
+                    backgroundColor: '#2ECC71'
+                }
+            },
+            {
+                value: '5',
+                style: {
+                    backgroundColor: '#3498DB'
+                }
+            },
+            {
+                value: '6',
+                style: {
+                    backgroundColor: '#E74C3C'
+                }
+            },
+            {
+                value: '7',
+                style: {
+                    backgroundColor: '#9B59B6'
+                }
+            },
+            {
+                value: '8',
+                style: {
+                    backgroundColor: '#BDC3C7'
+                }
+            },
+            {
+                value: '9',
+                style: {
+                    backgroundColor: '#447788'
+                }
+            },
+            {
+                value: '0',
+                style: {
+                    backgroundColor: '#203537'
+                }
+            }				
+        ];
+        operation = [
+            {
+                value: '÷',
+                style: {
+                    backgroundColor: '#3498DB'
+                }
+            },
+            {
+                value: '×',
+                style: {
+                    backgroundColor: '#E74C3C'
+                }
+            },
+            {
+                value: '-',
+                style: {
+                    backgroundColor: '#9B59B6'
+                }
+            },
+            {
+                value: '+',
+                style: {
+                    backgroundColor: '#BDC3C7'
+                }
+            }
+        ];
+        equal = [
+            {
+                value: '=',
+                style: {
+                    backgroundColor: '#2ECC71'
+                }
+            }
+        ];
+        answer = [
+            {
+                value: '?',
+                style: {
+                    backgroundColor: '#e67e22'
+                }
+            },
+            {
+                value: '1',
+                style: {
+                    backgroundColor: '#e67e22'
+                }
+            },
+            {
+                value: '2',
+                style: {
+                    backgroundColor: '#1ABC9C'
+                }
+            },
+            {
+                value: '3',
+                style: {
+                    backgroundColor: '#f1c40f'
+                }
+            },
+            {
+                value: '4',
+                style: {
+                    backgroundColor: '#2ECC71'
+                }
+            },
+            {
+                value: '5',
+                style: {
+                    backgroundColor: '#3498DB'
+                }
+            },
+            {
+                value: '6',
+                style: {
+                    backgroundColor: '#E74C3C'
+                }
+            },
+            {
+                value: '7',
+                style: {
+                    backgroundColor: '#9B59B6'
+                }
+            },
+            {
+                value: '8',
+                style: {
+                    backgroundColor: '#BDC3C7'
+                }
+            },
+            {
+                value: '9',
+                style: {
+                    backgroundColor: '#447788'
+                }
+            },
+            {
+                value: '0',
+                style: {
+                    backgroundColor: '#203537'
+                }
+            },
+            
+        ];
+    document.addEventListener('DOMContentLoaded', function(){
+        var submit = document.getElementById('submit'),
+            output = document.getElementById('output');
+        hexaDemo5 = new HexaFlip(document.getElementById('hexaflip-demo5'),
+            {set1: question, set2: operation, set3: question, set4: equal, set5:answer, set6:answer},
+            {fontSize: 100, margin: 4, perspective: 1000}
+        );
+        
+        /*
+        var one = document.getElementById('tens-place'),
+            ten = document.getElementById('ones-plae'),
+
+        document.getElementById('set-button').addEventListener('click', function(){
+            var time = {
+                set5: one.value,
+                set6: ten.value,
+            }
+            hexaDemo5.setValue(time);
+        });
+        */
+        
+        submit.addEventListener('click', function(){
+            if(hexaDemo5.getValue().join(' ') === 'red yellow blue green'){
+                output.innerHTML = 'password correct!';
+                hexaDemo5.flip();
+                hexaDemo5.flip();
+                hexaDemo5.flip();
+                hexaDemo5.flip();
+                hexaDemo5.flip();
+                hexaDemo5.flip();
+                hexaDemo5.flip();
+                hexaDemo5.flip();
+            }else{
+                output.innerHTML = 'password incorrect.';
+            }
+        }, false);
+        
+
+    }, false);
 </script>
 
 </body>
