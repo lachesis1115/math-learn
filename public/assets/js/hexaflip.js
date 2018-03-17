@@ -331,7 +331,16 @@
         }
         value = value.toString();
         cube = this.cubes[key];
-        index = this.sets[key].indexOf(value);
+        for (var i = 0, j = this.sets[key].length; i < j; i++) {
+          if (this.sets[key][i].hasOwnProperty('value') && this.sets[key][i].value === value) {
+            index = i;
+            break;
+          } else if (this.sets[key][i] === value) {
+            index = i;
+            break;
+          }
+        }
+        index = index === undefined ? -1 : index;
         cube.yDelta = cube.yLast = 90 * index;
         this._setSides(cube);
         _results.push(this._setContent(cube[faceSequence[index % 4]], value));
