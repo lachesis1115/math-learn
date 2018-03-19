@@ -27,6 +27,16 @@ $(function () {
     $('#myModal').modal('hide');
   });
 
+  $('#music-switch').on('change', function() {
+    var mSwitch = $(this)[0].checked;
+    var bgm = $('#bgm')[0];
+    if (mSwitch) {
+      bgm.play();
+    } else {
+      bgm.pause();
+    }
+  });
+
   var emotion = 1;
   if (LoginUser.bvp > LoginUser.heartRate && LoginUser.bvp > LoginUser.sclevel)  emotion = 3;
   if (LoginUser.sclevel > LoginUser.heartRate && LoginUser.sclevel > LoginUser.bvp) emotion = 2;
@@ -222,67 +232,93 @@ $(function () {
   $('.question_number').html('<h3><labe1 class="font-point">' + questionNumber + '</labe1></h3>');
 
   var questionCube = new HexaFlip(document.getElementById('hexaflip-demo5'),
-    { set1: question, set2: question, set3: operation, set4: question, set5: question, set6: equal, set7: answer, set8: answer },
-    { fontSize: 100, margin: 4, perspective: 1000, size: 150 }
+    {
+      set1: question,
+      set2: question,
+      set3: operation,
+      set4: question,
+      set5: question,
+      set6: equal,
+      set7: answer,
+      set8: answer
+    },
+    {fontSize: 100, margin: 4, perspective: 1000, size: 150}
   );
 
   var qreg = /(\d)?(\d)([+-×÷])(\d)?(\d)/;
   var qResult = Paper[i]['q' + questionNumber].match(qreg);
-  questionCube.setValue({ set1: qResult[1] || '0', set2: qResult[2], set3: qResult[3], set4: qResult[4] || '0', set5: qResult[5], set6: '=',  set7: '?', set8: '?' });
+  questionCube.setValue({
+    set1: qResult[1] || '0',
+    set2: qResult[2],
+    set3: qResult[3],
+    set4: qResult[4] || '0',
+    set5: qResult[5],
+    set6: '=',
+    set7: '?',
+    set8: '?'
+  });
 
   $('#set').on('click', function () {
     var answer = document.getElementById('answer_text');
     var value = answer.value;
-    var one = value%10;
-    var ten = (value-one)/10;
-    global_value=value;
-    questionCube.setValue({set7:ten,set8:one});
-    
+    var one = value % 10;
+    var ten = (value - one) / 10;
+    global_value = value;
+    questionCube.setValue({set7: ten, set8: one});
+
   });
 
   $('#check').on('click', function () {
-    var html=[];
+    var html = [];
 
-    if(global_value == Paper[i]['a' + questionNumber]){
+    if (global_value == Paper[i]['a' + questionNumber]) {
       $('.judge').html('<h2 class="mb right">&#10004</h2>');
-      point=point+10;
-      html=[];
+      point = point + 10;
+      html = [];
       $('.point').html('<h3><labe1 class="font-point">' + point + '</labe1></h3>');
-      correctNumber=correctNumber+1;
+      correctNumber = correctNumber + 1;
     }
-    else{
+    else {
       $('.judge').html('<h2 class="mb wrong">&#10007</h2>');
     }
   });
 
   $('#next').on('click', function () {
-    questionNumber=questionNumber+1;
+    questionNumber = questionNumber + 1;
     $('.judge').html('');
     qResult = Paper[i]['q' + questionNumber].match(qreg);
-    questionCube.setValue({ set1: qResult[1] || '0', set2: qResult[2], set3: qResult[3], set4: qResult[4] || '0', set5: qResult[5], set6: '=',  set7: '?', set8: '?' });
+    questionCube.setValue({
+      set1: qResult[1] || '0',
+      set2: qResult[2],
+      set3: qResult[3],
+      set4: qResult[4] || '0',
+      set5: qResult[5],
+      set6: '=',
+      set7: '?',
+      set8: '?'
+    });
     $('.question_number').html('<h3><labe1 class="font-title">' + questionNumber + '</labe1></h3>');
-    if(questionNumber==10){
-      $('.info').html('<strong>Wonderful!</strong> You have done all the questions!<a data-toggle="modal" data-target="#report"> See the report here</a</h3>');
-                                        
+    if (questionNumber == 10) {
+      $('.info').html('<strong>Wonderful!</strong> You have done all the questions!<a data-toggle="modal" data-target="#report"> See the report here</a></h3>');
+
     }
   });
 
-  accuracy=correctNumber/questionNumber;
+  accuracy = correctNumber / questionNumber;
 
-  jQuery(".fancybox").fancybox();
-
+  //jQuery(".fancybox").fancybox();
 
 
   var doughnutData = [
-          {
-              value: 70,
-              color:"#31aa33"
-          },
-          {
-              value : 30,
-              color : "#fdfdfd"
-          }
-      ];
+    {
+      value: 70,
+      color: "#31aa33"
+    },
+    {
+      value: 30,
+      color: "#fdfdfd"
+    }
+  ];
   var myDoughnut = new Chart(document.getElementById("report_canvas").getContext("2d")).Doughnut(doughnutData);
 
 });
@@ -291,12 +327,12 @@ function two_char(n) {
   return n >= 10 ? n : "0" + n;
 }
 function time_fun() {
-  var sec=0;
+  var sec = 0;
   setInterval(function () {
-      sec++;
-      var date = new Date(0, 0)
-      date.setSeconds(sec);
-      var h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
-      document.getElementById("time").innerText = two_char(h) + ":" + two_char(m) + ":" + two_char(s);
+    sec++;
+    var date = new Date(0, 0)
+    date.setSeconds(sec);
+    var h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
+    document.getElementById("time").innerText = two_char(h) + ":" + two_char(m) + ":" + two_char(s);
   }, 1000);
 }
