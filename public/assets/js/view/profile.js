@@ -25,8 +25,5 @@ $(function () {
   html.push('<div class="form-group">');
   html.push('<div class="col-lg-6">' + '  favorite music: ' + LoginUser["music"] + '</div>');
   html.push('</div>');
-  html.push('<div class="form-group">');
-  html.push('<center><button type="button" class="btn btn-info btn-lg btn-round">Edit</center>');
-  html.push('</div>');
   $('.profile').html(html.join(''));
 });

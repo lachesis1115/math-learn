@@ -38,6 +38,15 @@
 	font-family: Arial;
 }
 
+.info{
+	font-weight: bolder;
+	font-family: Arial;
+}
+
+.font-title{
+	font-family: Arial;
+}
+
 .right{
 	color: #31aa33;
 	font-weight: bolder;
@@ -62,4 +71,8 @@
 	font-weight: 600;
     color: #31aa33;
 	font-size: 25px;
+}
+
+.alert_info{
+	font-size:26px;
 }

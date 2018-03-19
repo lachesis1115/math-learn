@@ -9,7 +9,7 @@ $(function () {
   $('#myModal .btn-success').on('click', function() {
     var point = LoginUser["points"];
     if (point < 200) {
-      alert('Your point is not enough.');
+      alert('Your coins are not enough.');
     } else {
       LoginUser.points -= 200;
       Cookies.set('loginUser', LoginUser);

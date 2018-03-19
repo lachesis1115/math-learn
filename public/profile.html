@@ -20,23 +20,16 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link href="assets/css/hexaflip.css" rel="stylesheet" type="text/css">
+    <link href="demo.css" rel="stylesheet" type="text/css">
     <script src="assets/js/jquery.js"></script>
-
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
 
 <section id="container">
-    <!-- **********************************************************************************************************************************************************
-    TOP BAR CONTENT & NOTIFICATIONS
-    *********************************************************************************************************************************************************** -->
-    <!--header start-->
     <header class="header black-bg">
         <div class="sidebar-toggle-box">
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
@@ -194,12 +187,7 @@
             </ul>
         </div>
     </header>
-    <!--header end-->
 
-    <!-- **********************************************************************************************************************************************************
-    MAIN SIDEBAR MENU
-    *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
     <aside>
         <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
@@ -236,7 +224,7 @@
                 <li class="mt">
                     <a href="store.html">
                         <i class="fa fa-desktop"></i>
-                        <span>Point Store</span>
+                        <span>Store</span>
                     </a>
                 </li>
                 <li class="mt">
@@ -250,9 +238,7 @@
             <!-- sidebar menu end-->
         </div>
     </aside>
-    <!--sidebar end-->
 
-    <!--main content start-->
     <section id="main-content">
         <section class="wrapper site-min-height">
             <h3><i class="fa fa-angle-right"></i>User Profile</h3>
@@ -288,24 +274,19 @@
                                     <div class="form-group">
                                         <div class="col-lg-6">age:14</div>
                                     </div>
-                                    <div class="form-group">
-                                        <center><button type="button" class="btn btn-info btn-lg btn-round">Edit</center>
-                                    </div>
                                 </form>
                             </div><!-- /content-panel -->
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="form-panel ds">
-                                <h3><center>My Album</center></h3>                                  
-                                <div class="photo-wrapper">
-                                    <div class="photo">
-                                        <a class="fancybox" href="assets/img/portfolio/1.jpg">
-                                        <img class="img-responsive" src="assets/img/portfolio/1.jpg" alt=""></a>
-                                    </div>
-                                    <div class="overlay"></div>
-                                </div>    
-
+                                <h3><center>My Album</center></h3>    
+                                
+                                <div class="buttons">
+                                    <div id="prev" class="disc-button">&lt;</div>
+                                    <div id="next" class="disc-button">&gt;</div>
+                                </div>
+                                <div id="hexaflip-demo4" class="demo"></div>                            
                             </div>
                         </div>
                     </div>
@@ -340,10 +321,37 @@
 <!--common script for all pages-->
 <script src="assets/js/common-scripts.js"></script>
 
+
 <!--script for this page-->
 <script src="assets/js/view/common.js"></script>
 <script src="assets/js/js.cookie.min.js"></script>
 <script src="assets/js/view/profile.js"></script>
 <script src="assets/js/config/user.js"></script>
+<script src="assets/js/hexaflip.js"></script>
+<script>
+    var hexaDemo4,
+        images = [
+            './img/1.jpg',
+            './img/2.jpg',
+            './img/3.jpg',
+            './img/4.jpg',
+            './img/5.jpg',
+            './img/6.jpg'
+        ];
+    document.addEventListener('DOMContentLoaded', function(){
+        hexaDemo4 = new HexaFlip(document.getElementById('hexaflip-demo4'), {set: images},{
+            size: 500
+        });
+        document.getElementById('prev').addEventListener('click', function(){
+            hexaDemo4.flipBack();
+        }, false);
+        
+        document.getElementById('next').addEventListener('click', function(){
+            hexaDemo4.flip();
+        }, false);
+
+    }, false);
+
+</script>
 </body>
 </html>
