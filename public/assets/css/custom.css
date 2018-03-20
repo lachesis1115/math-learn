@@ -29,6 +29,7 @@
 
 .pn_saler {
 	height:400px;
+	width:450px;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -36,6 +37,7 @@
 	color: #31aa33;
 	font-weight: bolder;
 	font-family: Arial;
+	font-size:22px;
 }
 
 .info{
@@ -68,6 +70,7 @@
 	margin-left: 15px;
 }
 .donut1-chart h4 {
+	margin-top: 20px;
 	font-weight: 600;
     color: #31aa33;
 	font-size: 25px;
@@ -76,3 +79,10 @@
 .alert_info{
 	font-size:26px;
 }
+
+
+.center{   
+	margin:0 auto;   
+	width:600px;   
+	height:320px;   
+} 
