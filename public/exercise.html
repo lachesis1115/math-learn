@@ -319,16 +319,14 @@
                                                 <h4><label class="col-lg-4 control-label">Music Type</label></h4>
                                                 <div class="col-lg-6 btn-group">
                                                     <div class="btn-group">
-                                                        <audio id="bgm1" src="/sound/happy.mp3"  loop></audio>
-                                                        <audio id="bgm2" src="/sound/exiciting.mp3"  loop></audio>
-                                                        <audio id="bgm3" src="/sound/soft.mp3"  loop></audio>
-                                                        <button id="music1" type="button" class="btn btn-md  btn-warning">General</button>
+                                                        <audio id="bgm1" src="/sound/happy.mp3" loop></audio>
+                                                        <audio id="bgm2" src="/sound/exiciting.mp3" loop></audio>
+                                                        <audio id="bgm3" src="/sound/soft.mp3" loop></audio>
                                                     </div>
                                                     <div class="btn-group">
-                                                        <button id="music2" type="button" class="btn btn-md  btn-warning">Bright</button>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <button id="music3" type="button" class="btn btn-md  btn-warning">Soft</button>
+                                                        <button id="music1" data-type="bgm" type="button" class="btn btn-md btn-warning">General</button>
+                                                        <button id="music2" data-type="bgm" type="button" class="btn btn-md btn-warning">Bright</button>
+                                                        <button id="music3" data-type="bgm" type="button" class="btn btn-md btn-warning">Soft</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -410,43 +408,40 @@
             </div>
 
             <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="myModalLabel">Report of Exam</h4>
-                            </div>
-                            <div class="modal-body">
-                            
-                                <div class="pn_chart donut1-chart center">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-xs-6">
-                                            <canvas id="report_canvas" height="120" width="120"></canvas>
-                                        </div>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Report of Exam</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="pn_chart donut1-chart center">
+                                <div>
+                                    <div class="centered">
+                                        <canvas id="report_canvas" height="120" width="120"></canvas>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 col-xs-6 goleft"><p> Accuracy:</p></div>
-                                        <div class="col-sm-6 col-xs-6" id="acc"><h4>100%</h4></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 col-xs-6 goleft"><p> Time:</p></div>
-                                        <div class="col-sm-6 col-xs-6 time"><h4>time</h4></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 col-xs-6 goleft"><p> Point:</p></div>
-                                        <div class="col-sm-6 col-xs-6 point"><h4></h4></div>
-                                    </div> 
                                 </div>
-                            
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-success">Confirm</button>
+                                <div class="row centered">
+                                    <div class="col-sm-6 col-xs-6"><p> Accuracy:</p></div>
+                                    <div class="col-sm-6 col-xs-6" id="acc"><h4>100%</h4></div>
+                                </div>
+                                <div class="row centered">
+                                    <div class="col-sm-6 col-xs-6"><p> Time:</p></div>
+                                    <div class="col-sm-6 col-xs-6 time"><h4>time</h4></div>
+                                </div>
+                                <div class="row centered">
+                                    <div class="col-sm-6 col-xs-6"><p> Point:</p></div>
+                                    <div class="col-sm-6 col-xs-6 point"><h4></h4></div>
                                 </div>
                             </div>
 
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success">Confirm</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-
+            </div>
         </section>
         <! --/wrapper -->
     </section><!-- /MAIN CONTENT -->

@@ -239,24 +239,34 @@ $(function () {
   var QUESTION_COUNT = 10;
   var correctNumber = 0;
   var global_value = 0;
-  var i = 0;
+  var exam = getQuery('exam');
+  if (exam) {
+    exam = parseInt(exam);
+  } else {
+    exam = 0;
+  }
+  $('#select').val(exam + 1);
   var combo = 0;
   var accuracy=0;
 
-  $('#select_exam').on('click', function() {
-    var options=$("#select option:selected");
-    i=options.val()-1;
-    refresh();
-  });
-
-  function refresh(){
-    window.location.reload();
+  function getQuery(key) {
+    var result = location.search.match(new RegExp("[?&]" + key + "=([^&]+)", "i"));
+    if(result == null || result.length < 1) {
+      return '';
+    }
+    return result[1];
   }
+
+  $('#select_exam').on('click', function() {
+    var options = $("#select option:selected");
+    exam = options.val() - 1;
+    location.href = 'exercise.html?exam=' + exam;
+  });
 
   //initial part
   $('.point').html('<h4><label class="font-point">' + point + '</label></h4>');
-  $('.title').html('<h4><labe1 class="font-title">' + Paper[i]["title"] + '</label></h4>');
-  $('.level').html('<h4><labe1 class="font-title">' + Paper[i]["level"] + '</label></h4>');
+  $('.title').html('<h4><labe1 class="font-title">' + Paper[exam]["title"] + '</label></h4>');
+  $('.level').html('<h4><labe1 class="font-title">' + Paper[exam]["level"] + '</label></h4>');
   $('.question_number').html('<h4><labe1 class="font-title">' + questionNumber + '</labe1></h4>');
   $('.combo').html('<h4><labe1 class="font-point">' + combo + '</label></h4>');
 
@@ -275,7 +285,7 @@ $(function () {
   );
 
   var qreg = /(\d)?(\d)([+-×÷])(\d)?(\d)/;
-  var qResult = Paper[i]['q' + questionNumber].match(qreg);
+  var qResult = Paper[exam]['q' + questionNumber].match(qreg);
   questionCube.setValue({
     set1: qResult[1] || '0',
     set2: qResult[2],
@@ -300,7 +310,7 @@ $(function () {
   $('#check').on('click', function () {
     var html = [];
 
-    if (global_value == Paper[i]['a' + questionNumber]) {
+    if (global_value == Paper[exam]['a' + questionNumber]) {
       $('#bgm_correct')[0].play();
       $('.judge').html('<h2 class="mb right">&#10004</h2>');
       point = point + 10;
@@ -343,7 +353,7 @@ $(function () {
     questionNumber = questionNumber + 1;
     $('.judge').html('');
     $("#answer_text").val("");
-    qResult = Paper[i]['q' + questionNumber].match(qreg);
+    qResult = Paper[exam]['q' + questionNumber].match(qreg);
     questionCube.setValue({
       set1: qResult[1] || '0',
       set2: qResult[2],
@@ -362,7 +372,7 @@ $(function () {
   });
 
   $('#see_report').on('click', function () {
-    accuracy=correctNumber*10;
+    accuracy = correctNumber * 10;
     var doughnutData = [
       {
         value: accuracy,
@@ -374,8 +384,7 @@ $(function () {
       }
     ];
     var myDoughnut = new Chart(document.getElementById("report_canvas").getContext("2d")).Doughnut(doughnutData);
-    $('.acc').html('<h4>' + accuracy + '</h4>');
-    $('#point').html('<h4>' + point + '</h4>');
+    $('#acc').html('<h4>' + accuracy + '%</h4>');
   });
 
   
