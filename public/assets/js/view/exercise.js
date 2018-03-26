@@ -40,32 +40,36 @@ $(function () {
     $('.mood').html(html.join(''));
   });
 
+  var m=0;
   $('#music-switch').on('change', function() {
     var mSwitch = $(this)[0].checked;
-    var bgm = $('#bgm1')[0];
+    var bgm = $('#bgm'+m)[0];
     if (mSwitch) {
       bgm.play();
     } else {
       bgm.pause();
     }
   });
-
   $('#music1').on('click', function() {
     var bgm = $('#bgm1')[0];
+    $('#bgm2')[0].pause();
+    $('#bgm3')[0].pause();
     bgm.play();
-
+    m=1;
   });
-
   $('#music2').on('click', function() {
     var bgm = $('#bgm2')[0];
+    $('#bgm1')[0].pause();
+    $('#bgm3')[0].pause();
     bgm.play();
-
+    m=2;
   });
-
   $('#music3').on('click', function() {
     var bgm = $('#bgm3')[0];
+    $('#bgm2')[0].pause();
+    $('#bgm1')[0].pause();
     bgm.play();
-
+    m=3;
   });
 
   //exercise cube part
