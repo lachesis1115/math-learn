@@ -33,14 +33,15 @@ $(function () {
     if (LoginUser.heartRate == LoginUser.sclevel && LoginUser.heartRate == LoginUser.bvp) emotion = 4;
   
     var html = [];
-    if (emotion == 3)  html.push('<a id="bvp" class="btn btn-lg  btn-info">Happy Mode</a>');
-    if (emotion == 1)  html.push('<a id="heartRate" class="btn btn-lg  btn-warning">Sad Mode</a>');
+    if (emotion == 3)  html.push('<a id="bvp" class="btn btn-lg  btn-info">Sad Mode</a>');
+    if (emotion == 1)  html.push('<a id="heartRate" class="btn btn-lg  btn-warning">Happy Mode</a>');
     if (emotion == 2)  html.push('<a id="sclevel" class="btn btn-lg  btn-danger">Exciting Mode</a>');
     if (emotion == 4)  html.push('<a id="general" class="btn btn-lg  btn-success">General Mode</a>');
     $('.mood').html(html.join(''));
   });
 
   var m=0;
+
   $('#music-switch').on('change', function() {
     var mSwitch = $(this)[0].checked;
     var bgm = $('#bgm'+m)[0];
@@ -50,6 +51,8 @@ $(function () {
       bgm.pause();
     }
   });
+
+
   $('#music1').on('click', function() {
     var bgm = $('#bgm1')[0];
     $('#bgm2')[0].pause();
@@ -57,6 +60,7 @@ $(function () {
     bgm.play();
     m=1;
   });
+
   $('#music2').on('click', function() {
     var bgm = $('#bgm2')[0];
     $('#bgm1')[0].pause();
@@ -64,12 +68,14 @@ $(function () {
     bgm.play();
     m=2;
   });
+
   $('#music3').on('click', function() {
     var bgm = $('#bgm3')[0];
     $('#bgm2')[0].pause();
     $('#bgm1')[0].pause();
     bgm.play();
     m=3;
+
   });
 
   //exercise cube part
