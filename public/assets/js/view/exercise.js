@@ -33,10 +33,22 @@ $(function () {
     if (LoginUser.heartRate == LoginUser.sclevel && LoginUser.heartRate == LoginUser.bvp) emotion = 4;
   
     var html = [];
-    if (emotion == 3)  html.push('<a id="bvp" class="btn btn-lg  btn-info">Sad Mode</a>');
-    if (emotion == 1)  html.push('<a id="heartRate" class="btn btn-lg  btn-warning">Happy Mode</a>');
-    if (emotion == 2)  html.push('<a id="sclevel" class="btn btn-lg  btn-danger">Exciting Mode</a>');
-    if (emotion == 4)  html.push('<a id="general" class="btn btn-lg  btn-success">General Mode</a>');
+    if (emotion == 3){
+      html.push('<a id="bvp" class="btn btn-lg  btn-info">Sad Mode</a>');
+      exam=0;
+    }
+    if (emotion == 1){
+      html.push('<a id="heartRate" class="btn btn-lg  btn-warning">Happy Mode</a>');
+      exam=2;
+    }
+    if (emotion == 2){
+      html.push('<a id="sclevel" class="btn btn-lg  btn-danger">Exciting Mode</a>');
+      exam=2;
+    }
+    if (emotion == 4){ 
+      html.push('<a id="general" class="btn btn-lg  btn-success">General Mode</a>');
+      exam=1;
+    }
     $('.mood').html(html.join(''));
   });
 
