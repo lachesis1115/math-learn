@@ -279,6 +279,7 @@ $(function () {
   var global_value = 0;
   var combo = 0;
   var accuracy = 0;
+  var qreg = /(\d)?(\d)([+-×÷])(\d)?(\d)/;
 
   $('#select_exam').on('click', function() {
     var options = $("#select option:selected");
@@ -294,7 +295,6 @@ $(function () {
     $('.level').html('<h4><labe1 class="font-title">' + Paper[exam]["level"] + '</label></h4>');
     $('.question_number').html('<h4><labe1 class="font-title">' + questionNumber + '</labe1></h4>');
     $('.combo').html('<h4><labe1 class="font-point">' + combo + '</label></h4>');
-    var qreg = /(\d)?(\d)([+-×÷])(\d)?(\d)/;
     var qResult = Paper[exam]['q' + questionNumber].match(qreg);
     questionCube.setValue({
       set1: qResult[1] || '0',
