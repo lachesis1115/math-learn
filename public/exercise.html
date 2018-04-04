@@ -18,8 +18,6 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="assets/js/bootstrap-datepicker/css/datepicker.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/js/bootstrap-daterangepicker/daterangepicker.css"/>
 
     <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css"/>
     <script src="assets/js/jquery.js"></script>
@@ -29,7 +27,7 @@
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 </head>
 
-<body onload="time_fun()">
+<body>
 <section id="container">
     <header class="header black-bg">
         <div class="sidebar-toggle-box">
@@ -243,20 +241,20 @@
     <section id="main-content">
         <section class="wrapper">
             <h3>
-                <i class="fa fa-angle-right"></i> Exercise 
-                <span class="more" style="float: right;">               
+                <i class="fa fa-angle-right"></i> Exercise
+                <span class="more" style="float: right;">
                     More Exams
-                    <select id="select"  name="" value="more">   
-                        <option  value="1">exam_1</option>   
-                        <option  value="2">exam_2</option>   
-                        <option  value="3">exam_3</option>   
+                    <select id="select"  name="" value="more">
+                        <option  value="1">exam_1</option>
+                        <option  value="2">exam_2</option>
+                        <option  value="3">exam_3</option>
                         <option  value="4">exam_4</option>
-                        <option  value="4">exam_5</option> 
+                        <option  value="4">exam_5</option>
                     </select>
                     <button id="select_exam" type="button" class="btn btn-md btn-default">Set</button>
                 </span>
             </h3>
-            <div id="exercise">                
+            <div id="exercise">
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
@@ -264,7 +262,7 @@
                                 <div class="row mt">
                                     <div class="col-lg-6">
                                         <div class="question-one">
-                                             <div class="form-group">
+                                            <div class="form-group">
                                                 <h4><label class="col-lg-4 control-label">Title:</label></h4>
                                                 <div class="col-lg-6">
                                                     <div class="title"></div>
@@ -305,7 +303,7 @@
                                     <div class="col-lg-6">
                                         <div class="question-two">
                                             <div class="form-group">
-                                                <h4><label class="col-lg-4 control-label id="mode_panel">Current Mode:</label></h4>
+                                                <h4><label class="col-lg-4 control-label" id="mode_panel">Current Mode:</label></h4>
                                                 <div class="col-lg-6">
                                                     <div class="mood"></div>
                                                 </div>
@@ -367,7 +365,7 @@
                                                     </div>
                                                     <div class="btn-group">
                                                         <button id="next" type="button" class="btn btn-md btn-success">Next</button>
-                                                    </div> 
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -383,14 +381,14 @@
                                 <div class="row mt">
                                     <div class="col-lg-6">
                                         <div class="alert alert-warning alert-dismissable">
-                                            
+
                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                             <div class="alert_show">
-                                            <img src="assets/img/kids/girl-6.png" height="60" width="60"/>                                            
-                                            <label class="alert_info"><strong>Great! </strong>Now let's start do the exercise!</label>                                            
-                                            
+                                                <img src="assets/img/kids/girl-6.png" height="60" width="60"/>
+                                                <label class="alert_info"><strong>Great! </strong>Now let's start do the exercise!</label>
+
                                             </div>
-                                            <label class="alert_info"><strong>Congratulations! </strong>You have done all the questions!<a id="see_report" data-toggle="modal" data-target="#report">See the report here.</a</label>
+                                            <label class="alert_info"><strong>Congratulations! </strong>You have done all the questions!<a id="see_report" data-toggle="modal" data-target="#report">See the report here.</a></label>
                                         </div>
                                     </div>
                                 </div>
@@ -456,46 +454,46 @@
         </div>
     </footer>
 
-        <div class="showback">
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Input Your Data</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form class="form-horizontal style-form">
-                                <div class="form-group">
-                                    <label class="col-sm-6 control-label">Heart Rate(60-100)</label>
-                                    <div class="col-sm-4">
-                                        <input id="hr-input" type="text" class="form-control round-form">
-                                    </div>
+    <div class="showback">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Input Your Data</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal style-form">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Heart Rate(60-100)</label>
+                                <div class="col-sm-4">
+                                    <input id="hr-input" type="text" class="form-control round-form">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-6 control-label">Skin Conductance Level(0-100)</label>
-                                    <div class="col-sm-4">
-                                        <input id="sc-input" type="text" class="form-control round-form">
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Skin Conductance Level(0-100)</label>
+                                <div class="col-sm-4">
+                                    <input id="sc-input" type="text" class="form-control round-form">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-6 control-label">Blood Volume Pressure(0-100)</label>
-                                    <div class="col-sm-4">
-                                        <input id="bvp-input" type="text" class="form-control round-form">
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Blood Volume Pressure(0-100)</label>
+                                <div class="col-sm-4">
+                                    <input id="bvp-input" type="text" class="form-control round-form">
                                 </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button id="save-btn" type="button" class="btn btn-primary">Check your mood</button>
-                        </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button id="save-btn" type="button" class="btn btn-primary">Check your mood</button>
                     </div>
                 </div>
             </div>
         </div>
-        
+    </div>
+
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
@@ -522,16 +520,8 @@
 <!--custom tagsinput-->
 <script src="assets/js/jquery.tagsinput.js"></script>
 
-<!--custom checkbox & radio-->
-
-<script type="text/javascript" src="assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap-daterangepicker/date.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap-daterangepicker/daterangepicker.js"></script>
-
 <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
 
-
-<script src="assets/js/form-component.js"></script>
 <script src="assets/js/hexaflip.js"></script>
 <script src="assets/js/config/paper.js"></script>
 <script src="assets/js/js.cookie.min.js"></script>
@@ -543,9 +533,9 @@
 <script>
     //custom select box
 
-//    $(function () {
-//        $('select.styled').customSelect();
-//    });
+    //    $(function () {
+    //        $('select.styled').customSelect();
+    //    });
 
 </script>
 </body>

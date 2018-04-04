@@ -1,7 +1,21 @@
 $(function () {
-  // 显示模态对话框
+  function getQuery(key) {
+    var result = location.search.match(new RegExp("[?&]" + key + "=([^&]+)", "i"));
+    if(result == null || result.length < 1) {
+      return '';
+    }
+    return result[1];
+  }
 
-  $('#myModal').modal();
+  var exam = getQuery('exam');
+  if (exam) {
+    exam = parseInt(exam);
+  } else {
+    exam = 0;
+
+    // 如果不是用户自己选择的题目则显示模态对话框
+    $('#myModal').modal();
+  }
 
   $('#save-btn').on('click', function () {
     var heartRate = parseFloat($('#hr-input').val().trim());
@@ -31,32 +45,37 @@ $(function () {
     if (LoginUser.sclevel > LoginUser.heartRate && LoginUser.sclevel > LoginUser.bvp) emotion = 2;
     if (LoginUser.heartRate > LoginUser.sclevel && LoginUser.heartRate > LoginUser.bvp)  emotion = 1;
     if (LoginUser.heartRate == LoginUser.sclevel && LoginUser.heartRate == LoginUser.bvp) emotion = 4;
-  
+
     var html = [];
-    if (emotion == 3){
+    var tmepExam = 0;
+    if (emotion == 3) {
       html.push('<a id="bvp" class="btn btn-lg  btn-info">Sad Mode</a>');
-      exam=0;
+      tmepExam = 0;
     }
-    if (emotion == 1){
+    if (emotion == 1) {
       html.push('<a id="heartRate" class="btn btn-lg  btn-warning">Happy Mode</a>');
-      exam=2;
+      tmepExam = 2;
     }
-    if (emotion == 2){
+    if (emotion == 2) {
       html.push('<a id="sclevel" class="btn btn-lg  btn-danger">Exciting Mode</a>');
-      exam=2;
+      tmepExam = 2;
     }
-    if (emotion == 4){ 
+    if (emotion == 4) {
       html.push('<a id="general" class="btn btn-lg  btn-success">General Mode</a>');
-      exam=1;
+      tmepExam = 1;
+    }
+    if (exam !== tmepExam) {
+      exam = tmepExam;
+      renderQuestion();
     }
     $('.mood').html(html.join(''));
   });
 
-  var m=0;
+  var bgmIndex = 0;
 
   $('#music-switch').on('change', function() {
     var mSwitch = $(this)[0].checked;
-    var bgm = $('#bgm'+m)[0];
+    var bgm = $('#bgm'+ bgmIndex)[0];
     if (mSwitch) {
       bgm.play();
     } else {
@@ -64,13 +83,12 @@ $(function () {
     }
   });
 
-
   $('#music1').on('click', function() {
     var bgm = $('#bgm1')[0];
     $('#bgm2')[0].pause();
     $('#bgm3')[0].pause();
     bgm.play();
-    m=1;
+    bgmIndex = 1;
   });
 
   $('#music2').on('click', function() {
@@ -78,7 +96,7 @@ $(function () {
     $('#bgm1')[0].pause();
     $('#bgm3')[0].pause();
     bgm.play();
-    m=2;
+    bgmIndex = 2;
   });
 
   $('#music3').on('click', function() {
@@ -86,11 +104,10 @@ $(function () {
     $('#bgm2')[0].pause();
     $('#bgm1')[0].pause();
     bgm.play();
-    m=3;
-
+    bgmIndex = 3;
   });
 
-  //exercise cube part
+  // exercise cube part
   var question = [
     {
       value: '1',
@@ -258,26 +275,10 @@ $(function () {
 
   var point = 0;
   var questionNumber = 1;
-  var QUESTION_COUNT = 10;
   var correctNumber = 0;
   var global_value = 0;
-  var exam = getQuery('exam');
-  if (exam) {
-    exam = parseInt(exam);
-  } else {
-    exam = 0;
-  }
-  $('#select').val(exam + 1);
   var combo = 0;
-  var accuracy=0;
-
-  function getQuery(key) {
-    var result = location.search.match(new RegExp("[?&]" + key + "=([^&]+)", "i"));
-    if(result == null || result.length < 1) {
-      return '';
-    }
-    return result[1];
-  }
+  var accuracy = 0;
 
   $('#select_exam').on('click', function() {
     var options = $("#select option:selected");
@@ -285,12 +286,27 @@ $(function () {
     location.href = 'exercise.html?exam=' + exam;
   });
 
-  //initial part
-  $('.point').html('<h4><label class="font-point">' + point + '</label></h4>');
-  $('.title').html('<h4><labe1 class="font-title">' + Paper[exam]["title"] + '</label></h4>');
-  $('.level').html('<h4><labe1 class="font-title">' + Paper[exam]["level"] + '</label></h4>');
-  $('.question_number').html('<h4><labe1 class="font-title">' + questionNumber + '</labe1></h4>');
-  $('.combo').html('<h4><labe1 class="font-point">' + combo + '</label></h4>');
+  function renderQuestion() {
+    // initial part
+    $('#select').val(exam + 1);
+    $('.point').html('<h4><label class="font-point">' + point + '</label></h4>');
+    $('.title').html('<h4><labe1 class="font-title">' + Paper[exam]["title"] + '</label></h4>');
+    $('.level').html('<h4><labe1 class="font-title">' + Paper[exam]["level"] + '</label></h4>');
+    $('.question_number').html('<h4><labe1 class="font-title">' + questionNumber + '</labe1></h4>');
+    $('.combo').html('<h4><labe1 class="font-point">' + combo + '</label></h4>');
+    var qreg = /(\d)?(\d)([+-×÷])(\d)?(\d)/;
+    var qResult = Paper[exam]['q' + questionNumber].match(qreg);
+    questionCube.setValue({
+      set1: qResult[1] || '0',
+      set2: qResult[2],
+      set3: qResult[3],
+      set4: qResult[4] || '0',
+      set5: qResult[5],
+      set6: '=',
+      set7: '?',
+      set8: '?'
+    });
+  }
 
   var questionCube = new HexaFlip(document.getElementById('hexaflip-demo5'),
     {
@@ -306,18 +322,7 @@ $(function () {
     {fontSize: 100, margin: 4, perspective: 1000, size: 150}
   );
 
-  var qreg = /(\d)?(\d)([+-×÷])(\d)?(\d)/;
-  var qResult = Paper[exam]['q' + questionNumber].match(qreg);
-  questionCube.setValue({
-    set1: qResult[1] || '0',
-    set2: qResult[2],
-    set3: qResult[3],
-    set4: qResult[4] || '0',
-    set5: qResult[5],
-    set6: '=',
-    set7: '?',
-    set8: '?'
-  });
+  renderQuestion();
 
   $('#set').on('click', function () {
     var answer = document.getElementById('answer_text');
@@ -326,7 +331,6 @@ $(function () {
     var ten = (value - one) / 10;
     global_value = value;
     questionCube.setValue({set7: ten, set8: one});
-
   });
 
   $('#check').on('click', function () {
@@ -341,26 +345,26 @@ $(function () {
       combo = combo+1;
       $('.combo').html('<h4><labe1 class="font-point">' + combo + '</label></h4>');
       if(combo==3){
-          $('#bgm_un')[0].play();
-          $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Excellent! </strong>point+10</label>');
-          point=point+10;
+        $('#bgm_un')[0].play();
+        $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Excellent! </strong>point+10</label>');
+        point=point+10;
       }
       if(combo==5){
-          $('#bgm_un')[0].play();
-          $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Unbelievable! </strong>point+20 </label>');
-          point=point+20;
+        $('#bgm_un')[0].play();
+        $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Unbelievable! </strong>point+20 </label>');
+        point=point+20;
       }
       if(combo==10){
-          $('#bgm_un')[0].play();
-          $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Perfect work! </strong>point+50 </label>');
-          point=point+50;
+        $('#bgm_un')[0].play();
+        $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Perfect work! </strong>point+50 </label>');
+        point=point+50;
       }
       $('.point').html('<h4><labe1 class="font-point">' + point + '</labe1></h4>');
       if(questionNumber==10){
         $('#bgm_complete')[0].play();
-        $('.alert_show').html('<label class="alert_info"><strong>Congratulations! </strong>You have done all the questions!<a id="see_report" data-toggle="modal" data-target="#report">See the report here.</a</label>');
+        $('.alert_show').html('<label class="alert_info"><strong>Congratulations! </strong>You have done all the questions!<a id="see_report" data-toggle="modal" data-target="#report">See the report here.</a></label>');
       }
-      
+
     }
     else {
       $('#bgm_wrong')[0].play();
@@ -389,7 +393,6 @@ $(function () {
     $('.question_number').html('<h4><labe1 class="font-title">' + questionNumber + '</labe1></h4>');
     if (questionNumber == 10) {
       $('.info').html('<strong>Wonderful!</strong> You have done all the questions!<a data-toggle="modal" data-target="#report"> See the report here</a></h4>');
-
     }
   });
 
@@ -408,6 +411,4 @@ $(function () {
     var myDoughnut = new Chart(document.getElementById("report_canvas").getContext("2d")).Doughnut(doughnutData);
     $('#acc').html('<h4>' + accuracy + '%</h4>');
   });
-
-  
 });
