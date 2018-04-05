@@ -19,8 +19,8 @@ $(function() {
             html.push('    <div class="col-sm-6 col-xs-6"><h4>' + Report[m]["accuracy"] + '</h4></div>');
             html.push('</div>');
             html.push('<div class="row">');
-            html.push('    <div class="col-sm-6 col-xs-6 goleft"><p> Time:</p></div>');
-            html.push('    <div class="col-sm-6 col-xs-6"><h4>' + Report[m]["time"] + '</h4></div>');
+            html.push('    <div class="col-sm-6 col-xs-6 goleft"><p> Rank:</p></div>');
+            html.push('    <div class="col-sm-6 col-xs-6"><h4>' + Report[m]["rank"] + '</h4></div>');
             html.push('</div>');
             html.push('<div class="row">');
             html.push('    <div class="col-sm-6 col-xs-6 goleft"><p> Point:</p></div>');
