@@ -429,8 +429,12 @@ $(function () {
     }
   });
 
-
-  $('#see_report').on('click', function () {
+  $('#see_report').on('click', function() {
+    var reportCanvas = document.getElementById("report_canvas");
+    reportCanvas.width = 120;
+    reportCanvas.height = 120;
+    reportCanvas.style.height = 120;
+    reportCanvas.style.width = 120;
     accuracy = correctNumber * 10;
     var doughnutData = [
       {
@@ -438,11 +442,11 @@ $(function () {
         color: "#31aa33"
       },
       {
-        value: 100-accuracy,
+        value: 100 - accuracy,
         color: "#fdfdfd"
       }
     ];
-    var myDoughnut = new Chart(document.getElementById("report_canvas").getContext("2d")).Doughnut(doughnutData);
+    var myDoughnut = new Chart(reportCanvas.getContext("2d")).Doughnut(doughnutData);
     $('#acc').html('<h4>' + accuracy + '%</h4>');
   });
 });
