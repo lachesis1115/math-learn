@@ -28,10 +28,10 @@ $(function () {
     } else {
       return alert('the heartRate value should between 60-100!');
     }
-    if (sclevel && typeof sclevel === 'number' && sclevel >= 0 && sclevel <= 100) {
-      LoginUser.sclevel = sclevel;
+    if (sclevel && typeof sclevel === 'number' && sclevel >= 0 && sclevel <= 10) {
+      LoginUser.sclevel = sclevel*10;
     } else {
-      return alert('the sclevel value should between 0-100!');
+      return alert('the sclevel value should between 0-10!');
     }
     if (bvp && typeof bvp === 'number' && bvp >= 0 && bvp <= 100) {
       LoginUser.bvp = bvp;
@@ -295,6 +295,7 @@ $(function () {
   var wrong_combo = 0;
   var point_goal=0;
   var accuracy = 0;
+  var rank=' ';
   var qreg = /(\d)?(\d)([+-×÷])(\d)?(\d)/;
 
   $('#select_exam').on('click', function() {
@@ -436,6 +437,9 @@ $(function () {
     reportCanvas.style.height = 120;
     reportCanvas.style.width = 120;
     accuracy = correctNumber * 10;
+    if(accuracy >= point_goal) rank='A';
+    else rank='B';
+
     var doughnutData = [
       {
         value: accuracy,
@@ -447,6 +451,8 @@ $(function () {
       }
     ];
     var myDoughnut = new Chart(reportCanvas.getContext("2d")).Doughnut(doughnutData);
+    $('#rank').html('<h4>' + rank + '</h4>');
     $('#acc').html('<h4>' + accuracy + '%</h4>');
+
   });
 });
