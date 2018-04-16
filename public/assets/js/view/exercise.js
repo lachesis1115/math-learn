@@ -432,7 +432,7 @@ $(function () {
     }
   });
 
-  $('#see_report').on('click', function() {
+  $('.alert_show').on('click', '#see_report', function() {
     var reportCanvas = document.getElementById("report_canvas");
     reportCanvas.width = 120;
     reportCanvas.height = 120;
