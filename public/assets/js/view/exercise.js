@@ -312,6 +312,7 @@ $(function () {
     $('.level').html('<h4><labe1 class="font-title">' + Paper[exam]["level"] + '</label></h4>');
     $('.question_number').html('<h4><labe1 class="font-title">' + questionNumber + '</labe1></h4>');
     $('.combo').html('<h4><labe1 class="font-point">' + combo + '</label></h4>');
+    $('.correct').html('<h4><labe1 class="font-point">' + accuracy + '%</label></h4>');
     //$('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Great! </strong>Now let\'s start do the exercise! Try to earn <b>' + point_goal + '</b> point in the exam!</label>');
 
     var qResult = Paper[exam]['q' + questionNumber].match(qreg);
@@ -361,9 +362,11 @@ $(function () {
       point = point + 10;
       html = [];
       correctNumber = correctNumber + 1;
+      accuracy = correctNumber * 10;
       combo = combo+1;
       wrong_combo=0;
       $('.combo').html('<h4><labe1 class="font-point">' + combo + '</label></h4>');
+      $('.correct').html('<h4><labe1 class="font-point">' + accuracy + '%</label></h4>');
 
       if(emotion==3){
         $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Very good! </strong>You can do better.</label>');
@@ -384,11 +387,6 @@ $(function () {
         point=point+50;
       }
       $('.point').html('<h4><labe1 class="font-point">' + point + '</labe1></h4>');
-      if(questionNumber==10){
-        $('#bgm_complete')[0].play();
-        $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Congratulations! </strong>You have done all the questions!<a id="see_report" data-toggle="modal" data-target="#report">See the report here.</a></label>');
-      }
-
     }
     else {
       $('#bgm_wrong')[0].play();
@@ -405,6 +403,10 @@ $(function () {
         $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Oops... </strong>Let\'s try it again! </label>');
       }
       $('.combo').html('<h4><labe1 class="font-point">' + combo + '</label></h4>');
+    }
+    if(questionNumber==10){
+      $('#bgm_complete')[0].play();
+      $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Congratulations! </strong>You have done all the questions!<a id="see_report" data-toggle="modal" data-target="#report">See the report here.</a></label>');
     }
   });
 
@@ -436,7 +438,7 @@ $(function () {
     reportCanvas.height = 120;
     reportCanvas.style.height = 120;
     reportCanvas.style.width = 120;
-    accuracy = correctNumber * 10;
+    //accuracy = correctNumber * 10;
     if(accuracy >= point_goal) rank='A';
     else rank='B';
 
