@@ -37,7 +37,6 @@ var Report = [
     "accuracy": "80%",
     "point": 80,
     "rank":"B",
-    "time": "08:45"
   },
   {
     "title": "Exam_2",
@@ -45,7 +44,6 @@ var Report = [
     "accuracy": "90%",
     "point": 90,
     "rank":"A",
-    "time": "09:32"
   },
   {
     "title": "Exam_3",
@@ -53,7 +51,6 @@ var Report = [
     "accuracy": "80%",
     "point": 80,
     "rank":"A",
-    "time": "07:55"
   },
   {
     "title": "Exam_4",
@@ -61,6 +58,5 @@ var Report = [
     "accuracy": "100%",
     "point": 100,
     "rank":"A",
-    "time": "08:00"
   }
 ];

@@ -312,8 +312,7 @@ $(function () {
     $('.level').html('<h4><labe1 class="font-title">' + Paper[exam]["level"] + '</label></h4>');
     $('.question_number').html('<h4><labe1 class="font-title">' + questionNumber + '</labe1></h4>');
     $('.combo').html('<h4><labe1 class="font-point">' + combo + '</label></h4>');
-    $('.correct').html('<h4><labe1 class="font-point">' + accuracy + '%</label></h4>');
-    //$('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Great! </strong>Now let\'s start do the exercise! Try to earn <b>' + point_goal + '</b> point in the exam!</label>');
+    $('.goal').html('<h4><labe1 class="font-point">' + point_goal + '</label></h4>');
 
     var qResult = Paper[exam]['q' + questionNumber].match(qreg);
     questionCube.setValue({
@@ -366,7 +365,6 @@ $(function () {
       combo = combo+1;
       wrong_combo=0;
       $('.combo').html('<h4><labe1 class="font-point">' + combo + '</label></h4>');
-      $('.correct').html('<h4><labe1 class="font-point">' + accuracy + '%</label></h4>');
 
       if(emotion==3){
         $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Very good! </strong>You can do better.</label>');
@@ -407,6 +405,7 @@ $(function () {
     if(questionNumber==10){
       $('#bgm_complete')[0].play();
       $('.alert_show').html('<img src="assets/img/kids/girl-6.png" height="60" width="60"/><label class="alert_info"><strong>Congratulations! </strong>You have done all the questions!<a id="see_report" data-toggle="modal" data-target="#report">See the report here.</a></label>');
+      $('#save-answer').show();
     }
   });
 
@@ -439,7 +438,7 @@ $(function () {
     reportCanvas.style.height = 120;
     reportCanvas.style.width = 120;
     //accuracy = correctNumber * 10;
-    if(accuracy >= point_goal) rank='A';
+    if(point >= point_goal) rank='A';
     else rank='B';
 
     var doughnutData = [
@@ -455,6 +454,30 @@ $(function () {
     var myDoughnut = new Chart(reportCanvas.getContext("2d")).Doughnut(doughnutData);
     $('#rank').html('<h4>' + rank + '</h4>');
     $('#acc').html('<h4>' + accuracy + '%</h4>');
+  });
 
+  $('#save-answer').on('click', function() {
+    var data = {
+      title: 'exam_' + (exam + 1),
+      accuracy: accuracy,
+      point: point,
+      rank: rank
+    };
+    $.ajax({
+      url: '/reports/save',
+      dataType: 'json',
+      type: 'post',
+      data: data,
+      success: function(data) {
+        if (data.resultCode === 0) {
+          alert('Ponit save success!');
+        } else {
+          alert('Ponit save fail!');
+        }
+      },
+      error: function() {
+        alert('Ponit save fail!');
+      }
+    });
   });
 });

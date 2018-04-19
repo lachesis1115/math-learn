@@ -1,4 +1,4 @@
-var mongoose = require( 'mongoose' );
+var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
     name: {type:String, required:true},
@@ -15,6 +15,16 @@ var userSchema = new mongoose.Schema({
   });
 
   mongoose.model('User', userSchema);
+
+var reportSchema = new mongoose.Schema({
+    title: String,
+    name: String,
+    accuracy: String,
+    point: Number,
+    rank: String
+  });
+
+  mongoose.model('Report', reportSchema);
 
 var achievementSchema = new mongoose.Schema({
     number: {type:Number, min:0},

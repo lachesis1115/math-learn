@@ -1,7 +1,7 @@
 require('./locations');
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/math_learn';
+var dbURI = 'mongodb://localhost/local';
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function () {
